@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- large -->
+    <dimen name="dim5">17dp</dimen>
+
+</resources>

@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Sponsored Child Tracking</string>
+    <string name="title_activity_detail">Search...</string>
+    <string-array name="planets"></string-array>
+    <string-array name="division">
+
+    </string-array>
+
+    <!--expandable-->
+    <string name="action_left">Squeeze a lemon</string>
+    <string name="action_mid">Add some sugar</string>
+    <string name="action_right">Make lemonade</string>
+
+    <!--underlineTitle-->
+    <string name="my_text"> <u><b>SEARCH PROJECT CHILD</b></u>.</string>
+
+    <!--for MAP-->
+    <string name="clear_map">Clear</string>
+    <string name="reset_map">Reset</string>
+    <string name="map_not_ready">Map is not ready yet</string>
+
+    <!--Boom Menu-->
+
+    <string name="text_sc_scheduling">SC Scheduling</string>
+    <string name="text_survey">Survey</string>
+    <string name="text_survey_history">Survey History </string>
+    <string name="text_general_servey">General Survey</string>
+    <string name="text_update">Sync With Server</string>
+    <string name="text_sign_out">Sign out</string>
+    <string name="project_list">Project Names</string>
+    <string name="project_url">Change Server </string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Welcome Screen-->
+    <string name="snackbar_name">Get Monitor Data !</string>
+    <string name="no_internet">No Internet Connection !</string>
+    <string name="sc_status">You can update your profile after 9 months from Joining Date !</string>
+    <string name="internet_connected">Internet Connected !</string>
+    <string name="btn_settings">SETTING!</string>
+    <string name="title_activity_survey_list">Survey List</string>
+    <string name="title_activity_survey_history">SurveyHistoryActivity</string>
+    <string name="title_activity_database_update">DatabaseUpdateActivity</string>
+    <string name="title_activity_update_profile">UpdateProfileActivity</string>
+
+    <!--bottom menu-->
+    <!--BOTTOOM MENU-->
+    <string name="title"><b><i>BENEFIT TRACKING</i></b></string>
+    <string name="share"><b><i>Scheduling Sponsored Child</i></b></string>
+    <string name="generalsurvey"><b><i>General Survey</i></b></string>
+    <string name="changeserver"><b><i>Change Server</i></b></string>
+    <string name="scsurvey"><b><i>Survey Sponsored Child</i></b></string>
+    <string name="print"><h1>Print this page</h1></string>
+    <string name="call">Call</string>
+    <string name="surveyhistory"><b><i>Survey Hisyory</i></b></string>
+    <string name="sync"><b><i>Sync With Server</i></b></string>
+    <string name="signout"><b><i>Sign Out</i></b></string>
+    <string name="help">Help</string>
+    <string name="bottomsheet"><b><i>Tracking Sponsored Child Benefits-</i></b></string>
+
+    <!--BOTTOOM MENU-->
+    <!--bottom menu-->
+    <string name="familyTitle"><b><i><u>FAMILY INFORMATION ...</u></i></b></string>
+
+</resources>

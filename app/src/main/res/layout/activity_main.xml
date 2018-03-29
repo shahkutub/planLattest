@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.nanosoft.planInternational.tracking.view.activity.MainActivity">
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_br_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include layout="@layout/toolbar_layout"></include>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:padding="5dp"
+            android:visibility="invisible"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <android.support.v7.widget.Toolbar
+
+                android:id="@+id/toolbar_viewpger"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#dc6e1a"
+                android:paddingRight="5dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_search"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#8b7c8a"
+                android:gravity="center_vertical"
+
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        </FrameLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main"
+        />
+
+
+</android.support.design.widget.CoordinatorLayout>

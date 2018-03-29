@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D9D9D6"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        >
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/edittext_margin_top">
+
+            <TextView android:layout_width="fill_parent"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:selectAllOnFocus="false"
+                android:linksClickable="false"
+                android:autoLink="all"
+                android:text="Photo Details "
+                android:textColor="#EF008C"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#dad8d8"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="9.1) SC Photo Taken With Family Member "
+            android:textColor="#243C4B"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:id="@+id/motherPhotoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:paddingBottom="25dp"
+            android:paddingTop="10dp"
+            >
+
+
+            <ImageView
+                android:id="@+id/imvMotherPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+
+                android:src="@drawable/splash"
+                />
+
+
+            <Button
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="photoWithMother"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/camera"
+
+                />
+        </RelativeLayout>
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="9.2) SC Photo Taken With Father"
+            />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/imvFatherPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/splash"
+                />
+
+
+            <Button
+
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="photoWithFather"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/camera"
+
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="9.3) SC Photo Taken With Grand Mother"
+            />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/imvGrandMotherPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/splash"
+                />
+
+            <Button
+
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="photoWithGrandMother"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/camera"
+
+                />
+        </RelativeLayout>
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="9.4) SC Photo Taken With Grand Father"
+            />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/imvGrandFatherPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/splash"
+                />
+
+
+            <Button
+
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="photoWithGrandFather"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/camera"
+
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="9.5) SC Photo Taken With Brother"
+            />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            >
+
+            <ImageView
+                android:id="@+id/imvBrotherPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/splash"
+                />
+
+            <Button
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="photoWithBrother"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/camera"
+
+                />
+        </RelativeLayout>
+
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="9.6) SC Photo Taken With Sister"
+            />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+
+            >
+
+            <Button
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:onClick="photoWithSister"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/camera"
+
+                />
+
+            <ImageView
+                android:id="@+id/imvSisterPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/splash"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

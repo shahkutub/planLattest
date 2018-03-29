@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9E9E9E</color>
+    <color name="colorPrimaryDark">#616161</color>
+    <color name="colorAccent">#FF4081</color>
+<!--    custom-->
+    <color name="white">#ffffff</color>
+    <color name="dpnamecolor">#fff</color>
+    <color name="weekcolor">#fff</color>
+    <color name="agendacolor">#8E9097</color>
+    <color name="timecolor">#000</color>
+    <color name="schedulecolor">#000</color>
+    <color name="statementcolor">#778AA6</color>
+
+    <!--EXPANDABLE BUTTON COLOR-->
+    <color name="green">#75cd00</color>
+    <color name="green_dark">#3c6e02</color>
+    <color name="blue">#0044e1</color>
+    <color name="blue_dark">#00217c</color>
+    <color name="red">#d11e2c</color>
+    <color name="red_dark">#810f19</color>
+    <color name="gray">#b6b1ac</color>
+    <color name="gray_dark">#6d6967</color>
+    <color name="black">#000000</color>
+    <color name="black_pressed">#7b7b7b</color>
+    <color name="fg">#d7d1e2</color>
+    <!--map color-->
+    <!--map color-->
+    <!-- custom light theme: -->
+    <color name="primary">#3C4655</color>
+    <color name="primary_dark">#0E0E0E</color>
+    <color name="accent">#F4982E</color>
+
+</resources>

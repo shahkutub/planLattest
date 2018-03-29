@@ -1,0 +1,88 @@
+<md-card ng-attr-style="{{BackgroundColor}}" ng-repeat="x in primaryqs track by x.surveyQuestionTableId">
+    <md-card-title>
+        <md-card-title-text>
+            <h4 ng-if="x.questionType!='3' ">{{x.questionName}}</h4>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content>
+        <div ng-if="x.questionType=='1'" ng-attr-id='{{"qt1sq"+x.surveyQuestionTableId}}' ng-init="qt1choices = getChoicesByQsId(x.surveyQuestionTableId)">
+            <div ng-repeat="r in qt1choices">
+                <md-checkbox ng-model="r.checked" aria-label="{{r.answer_choice}}" ng-change="val(r,x.surveyQuestionTableId,'qt1sq'+x.surveyQuestionTableId)">
+                    {{r.answer_choice}}<i>{{" ("+r.ansNo+")"}}</i>
+                </md-checkbox>
+            </div>
+        </div>
+        <div ng-if="x.questionType=='2'" ng-attr-id='{{"qt2sq"+x.surveyQuestionTableId}}'>
+            <md-input-container>
+                <label>Select</label>
+                <md-select ng-init="qt2choices = getChoicesByQsId(x.surveyQuestionTableId)" ng-change="SelectChange(AnswerChoice,x.surveyQuestionTableId,'qt2sq'+x.surveyQuestionTableId)"
+                    ng-model="AnswerChoice">
+                    <md-option ng-repeat="r in qt2choices" ng-value="r.id">
+                        {{r.answer_choice}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div ng-if="x.questionType=='3'" ng-attr-id='{{"qt3sq"+x.surveyQuestionTableId}}'>
+            <md-input-container class="md-block">
+                <label>{{x.questionName}}</label>
+                <input md-no-asterisk ng-model="AnswerQsType3" ng-change="TextChange(AnswerQsType3,x.surveyQuestionTableId)">
+            </md-input-container>
+        </div>
+        <div ng-if="x.questionType=='4'" ng-attr-id='{{"qt4sq"+x.surveyQuestionTableId}}'>
+            <!--<textarea class="form-control" placeholder="{{x.questionName}}" ng-change="TextChange(AnswerQsType4,x.surveyQuestionTableId)"
+            ng-model="AnswerQsType4"></textarea>-->
+            <md-input-container class="md-block">
+                <textarea ng-change="TextChange(AnswerQsType4,x.surveyQuestionTableId)" ng-model="AnswerQsType4" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+        </div>
+        <div ng-init="qt5choices = getChoicesByQsId(x.surveyQuestionTableId)" ng-if="x.questionType=='5'" ng-attr-id='{{"qt5sq"+x.surveyQuestionTableId}}'>
+            <div>
+                <div ng-repeat="r in qt5choices ">
+                    <b><p for="label">{{r.answer_choice}}</p></b>
+                    <md-input-container>
+                        <label>Select</label>
+                        <md-select ng-model="AnswerQsType5" ng-change="Qstype5Change(x.surveyQuestionTableId,r,AnswerQsType5)">
+                            <md-option ng-repeat="r in qt5choices " ng-attr-value="{{$index+1}}">
+                                {{$index+1}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div ng-if="x.questionType=='6'" ng-attr-id='{{"qt6sq"+x.surveyQuestionTableId}}'>
+            <ng-rate-it ng-model="$ctrl.rate" step='1' max='x.scale' ng-click='RateClick(x.surveyQuestionTableId)'></ng-rate-it>
+        </div>
+
+        <div ng-init="qt7choices = getChoicesByQsId(x.surveyQuestionTableId)" ng-if="x.questionType=='7'" ng-attr-id='{{"qt7sq"+x.surveyQuestionTableId}}'>
+            <div style="margin-top: 4px;">
+                <div ng-repeat="r in qt7choices">
+                    <md-input-container class="md-block">
+                        <label>{{r.answer_choice}}</label>
+                        <input md-no-asterisk ng-model="AnswerQsType7" ng-change="QsType7Change(x.surveyQuestionTableId,r,AnswerQsType7)">
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div ng-if="x.questionType=='8'" ng-attr-id='{{"qt8sq"+x.surveyQuestionTableId}}'>
+            <!--<input class="form-control" type="date" placeholder="{{x.questionName}}" ng-change="TextChange(AnswerQsType8,x.surveyQuestionTableId)"
+            ng-model="AnswerQsType8">-->
+            <md-datepicker ng-change="TextChange(AnswerQsType8,x.surveyQuestionTableId)" ng-model="AnswerQsType8" md-placeholder="{{x.questionName}}"></md-datepicker>
+        </div>
+        <div ng-if="x.questionType=='9'" ng-init="qt9choices = getChoicesByQsId(x.surveyQuestionTableId)" ng-attr-id="{{'qt9sq'+x.surveyQuestionTableId}}">
+            <div style="padding-left: 20px" class="radio">
+                <!--<input ng-attr-name="rdo{{x.surveyQuestionTableId}}" type="radio" ng-attr-value="{{r.id}}" ng-model="x.qs9" ng-click="rdoClick(x.qs9,x.surveyQuestionTableId,'qt9sq'+x.surveyQuestionTableId)">
+            <lable style=" font-weight: 700;">{{r.answer_choice}}</lable>
+            <i>{{" ("+r.ansNo+")"}}</i>-->
+
+                <md-radio-group ng-model="x.qs9" ng-change="rdoClick(x.qs9,x.surveyQuestionTableId,'qt9sq'+x.surveyQuestionTableId)">
+                    <md-radio-button ng-repeat="r in qt9choices" ng-attr-value="{{r.id}}">
+                        {{r.answer_choice}}
+                        <i>{{" ("+r.ansNo+")"}}</i>
+                    </md-radio-button>
+                </md-radio-group>
+            </div><br>
+        </div>
+    </md-card-content>
+</md-card>

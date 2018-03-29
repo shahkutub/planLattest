@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardViewSCList"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/scPhotoIv"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/circle_2" />
+        <!--    <ImageView
+                android:id="@+id/scPhotoIv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/circle_2"
+                />
+    -->
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:padding="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/statusTv"
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/statementcolor"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    android:textColor="@color/white"
+                    />
+
+                <TextView
+                    android:id="@+id/dateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:hint="Date"
+                    android:gravity="center"
+
+                     />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/scNameTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:hint="AZHAR"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/scIdTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="1231424"
+                    android:textSize="16sp"/>
+
+            </LinearLayout>
+
+                />
+
+            <TextView
+                android:id="@+id/scAgeTv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="25"
+                android:textSize="16sp"
+
+                />
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/scCheck"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight=".8"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center" />
+
+
+    </LinearLayout>
+
+
+</android.support.v7.widget.CardView>

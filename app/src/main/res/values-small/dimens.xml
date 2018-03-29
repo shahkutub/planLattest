@@ -1,0 +1,6 @@
+<resources>
+
+    //dim small
+    <dimen name="dim5">5dp</dimen>
+
+</resources>

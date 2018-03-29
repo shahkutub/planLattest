@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_questionery"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:background="#d3c4f1"
+    tools:context="com.nanosoft.planInternational.tracking.view.activity.QuestioneryActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/activity_main"
+        android:visibility="gone"
+        >
+        <Button
+            android:id="@+id/saveDataBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textAllCaps="false"
+            android:onClick="saveDataBtn"
+            />
+    </LinearLayout>
+    <WebView
+        android:id="@+id/webviewProject"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></WebView>
+
+
+
+</LinearLayout>

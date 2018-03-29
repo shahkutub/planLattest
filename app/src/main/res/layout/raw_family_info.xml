@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/famaly_bac"
+    android:layout_margin="@dimen/_10sdp"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgDelete"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_alignParentRight="true"
+            android:layout_height="@dimen/_25sdp"
+            android:src="@drawable/ic_action_delete"
+            />
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.2) Name known by"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+
+        <EditText
+            android:id="@+id/et3_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:inputType="textCapSentences"
+            />
+
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.4) Year of birth"
+        android:textColor="@color/black"
+            android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+
+        <EditText
+            android:id="@+id/et3_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:inputType="number"
+            />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.5) Relation to SC"
+        android:textColor="@color/black"
+            android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+
+        <LinearLayout
+            android:id="@+id/layRelation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_3sdp"
+            android:background="#E8E8E8"
+            >
+        <Spinner
+            android:id="@+id/sp3_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Spinner>
+
+            </LinearLayout>
+        <EditText
+            android:id="@+id/et3_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:inputType="textCapSentences"
+            />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.5 A) Gender"
+        android:textColor="@color/black"
+            android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_3sdp"
+            android:background="#E8E8E8"
+            >
+        <Spinner
+            android:id="@+id/sp3_5_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout>
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.6) SC primary carer"
+        android:textColor="@color/black"
+            android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+
+        <EditText
+            android:id="@+id/et3_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:inputType="textCapSentences"
+            />
+
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.7) Occupation"
+        android:textColor="@color/black"
+            android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+
+        <LinearLayout
+            android:id="@+id/layOccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_3sdp"
+            android:background="#E8E8E8"
+            >
+        <Spinner
+            android:id="@+id/sp3_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout>
+        <EditText
+            android:id="@+id/et3_7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:inputType="textCapSentences"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.8) Who left household"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_3sdp"
+            android:background="#E8E8E8"
+            >
+        <Spinner
+            android:id="@+id/sp3_8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Spinner>
+
+        </LinearLayout>
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.8a) Why are they no longer in the household"
+        android:textColor="@color/black"
+            android:textStyle="bold"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#E8E8E8"
+            android:padding="@dimen/_3sdp"
+            >
+        <Spinner
+            android:id="@+id/sp3_8a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Spinner>
+
+            </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="3.9) What is the reason the immediate family member now lives with the SC"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_3sdp"
+            android:background="#E8E8E8"
+            >
+        <Spinner
+            android:id="@+id/sp3_9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Spinner>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

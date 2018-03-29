@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sc_scheduling"
+        android:icon="@drawable/ic_speaker_notes_black_48dp"
+        android:title="@string/share" />
+    <item
+        android:id="@+id/sc_servey"
+        android:icon="@drawable/ic_assignment_black_48dp"
+        android:title="@string/scsurvey" />
+    <item
+        android:id="@+id/general_survey"
+        android:icon="@drawable/ic_chrome_reader_mode_black_48dp"
+        android:title="@string/generalsurvey" />
+    <!--<item
+        android:id="@+id/survey_history"
+        android:icon="@drawable/ic_assessment_black_48dp"
+        android:title="@string/surveyhistory" />-->
+    <item
+        android:id="@+id/sync_server"
+        android:icon="@drawable/ic_update_black_48dp"
+        android:title="@string/sync" />
+    <item
+        android:id="@+id/server_url"
+        android:icon="@mipmap/ic_url"
+        android:title="@string/changeserver" />
+    <item
+        android:id="@+id/signout"
+        android:icon="@drawable/ic_lock_outline_black_48dp"
+        android:title="@string/signout" />
+
+    <group
+        android:id="@android:id/empty"
+        android:visible="false">
+        <item
+            android:id="@+id/help1"
+            android:icon="@drawable/perm_group_system_tools"
+            android:title="@string/help" />
+    </group>
+</menu>
+

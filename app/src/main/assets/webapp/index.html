@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="css/ng-rateit.css">
+
+    <style>
+        * {
+            -webkit-user-select: none;
+        }
+    </style>
+    <script src="jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="js/ng-rateit.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+        #pagehead {
+            text-align: center;
+            color: white;
+            background-color: #243c4b;
+            line-height: 2em;
+        }
+    </style>
+</head>
+
+<body style="background-color: #d9d9d6">
+    <div style="background-color: #d9d9d6">
+        <h2 id='pagehead'>AssalamuAlaikum</h2>
+        <div ng-app="myApp">
+            <div ng-controller="tst">
+                <div ng-if="Visible[0]">
+                    <md-card>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <h4>Do you agree to provide all survey information willingly?</h4>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <div style="text-align: center" ng-init="isRecord=false">
+                                <md-button ng-click="isRecord=true" class="md-raised md-primary">Yes</md-button>
+                                <md-button ng-click="isRecord=false" class="md-raised md-warn">No</md-button>
+                            </div>
+                            <div style="text-align: center" ng-if="isRecord">
+                                <md-button class="md-fab md-mini md-primary" ng-click="BtnRecord()">
+                                    <img src="record.svg" id="imgrecord">
+                                </md-button>
+                                <md-button class="md-fab md-mini md-primary" ng-click="BtnStopRecord()">
+                                    <img src="stoprecording.svg">
+                                </md-button>
+                                <md-button class="md-fab md-mini md-primary" ng-click="BtnPlayRecord()">
+                                    <img src="playrecording.svg">
+                                </md-button>
+                                <md-button ng-click="BtnSaveRecord()" class="md-raised md-primary">Save</md-button>
+
+                            </div>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div ng-if="Visible[1]">
+                    <md-card>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <h4>Project List</h4>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <md-list ng-cloak>
+                                <md-list-item ng-repeat="x in ProjectList" ng-click="ProjectClick(x)">
+                                    <!--<p class="md-secondary" >  </p>-->
+                                    <md-checkbox tyle=" float: left;" ng-model="x.completed" ng-disabled="true">
+                                    </md-checkbox>
+                                    <div>{{ x.name }}</div>
+                                </md-list-item>
+                            </md-list>
+                        </md-card-content>
+                    </md-card>
+                </div>
+                <div ng-if="Visible[2]">
+                    <!--<p ng-repeat="x in SurveyList" ng-click="SurveyClick(x)">{{x.name}}</p>-->
+                    <md-card>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <h4>Survey List</h4>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <md-list ng-cloak>
+                                <md-list-item ng-repeat="x in SurveyList" ng-click="SurveyClick(x)">
+                                    <!--<p class="md-secondary" > </p>-->
+                                    <md-checkbox style=" float: left;" ng-model="x.completed" ng-disabled="true">
+                                    </md-checkbox>
+                                    <div>{{ x.name }}</div>
+                                </md-list-item>
+                            </md-list>
+                        </md-card-content>
+                    </md-card>
+                </div>
+
+                <qscomp id='primaryqs' ng-if="Visible[3]"></qscomp>
+                <div style="text-align: center" ng-if="Visible[3]">
+                    <md-button ng-click="OK()" class="md-raised md-primary">Save</md-button>
+                </div>
+
+                <md-button class="md-fab md-mini md-primary" aria-label="Use Android" style="position: fixed;    bottom: 0;    left: 0;"
+                    ng-click="BackButtonClick()">
+                    <img src="restart.svg">
+                </md-button>
+                <md-button class="md-fab md-mini md-warn" aria-label="Use Android" style="position: fixed;    bottom: 0;    right: 0;" ng-click="ExitButtonClick()">
+                    <img src="cross.svg">
+                </md-button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/activity_main"
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+
+    tools:context=".view.activity.UpdateProfileActivity">
+
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+
+            <Button
+
+                android:id="@+id/expandableButton1"
+
+                android:layout_width="fill_parent"
+
+                android:layout_height="wrap_content"
+
+                android:background="#0072CE"
+
+                android:drawableRight="@android:drawable/arrow_down_float"
+
+                android:onClick="expandableButton1"
+
+                android:paddingRight="10dp"
+
+                android:text="HEALTH"
+
+                android:textColor="#fff" />
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+
+                android:id="@+id/expandableLayout1"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:layout_below="@+id/expandableButton1"
+
+                android:background="#D9D9D6"
+
+                android:padding="16dp"
+
+                app:el_duration="1000"
+
+                app:el_expanded="false"
+
+                app:el_parallax="0.5">
+
+
+                <include layout="@layout/general_questionery_update_health" />
+
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+            <Button
+
+                android:id="@+id/expandableButton2"
+
+                android:layout_width="fill_parent"
+
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/expandableLayout1"
+
+                android:background="#0072CE"
+
+                android:drawableRight="@android:drawable/arrow_down_float"
+
+                android:onClick="expandableButton2"
+
+                android:paddingRight="10dp"
+
+                android:text="EDUCATION"
+
+                android:textColor="#fff" />
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+
+                android:id="@+id/expandableLayout2"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:layout_below="@+id/expandableButton2"
+
+                android:background="#D9D9D6"
+
+                android:padding="16dp"
+
+                app:el_duration="1000"
+
+                app:el_expanded="false"
+                app:el_parallax="0.5">
+
+                <include layout="@layout/general_questionery_update_education" />
+
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+            <Button
+
+                android:id="@+id/expandableButton4"
+
+                android:layout_width="fill_parent"
+
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/expandableLayout2"
+
+                android:background="#0072CE"
+
+
+                android:drawableRight="@android:drawable/arrow_down_float"
+
+                android:onClick="expandableButton4"
+
+                android:paddingRight="10dp"
+
+                android:text="HOUSING"
+
+                android:textColor="#fff" />
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+
+                android:id="@+id/expandableLayout4"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:layout_below="@+id/expandableButton4"
+
+                android:background="#D9D9D6"
+
+                android:padding="16dp"
+
+                app:el_duration="1000"
+
+                app:el_expanded="false"
+
+                app:el_parallax="0.5">
+
+
+                <include layout="@layout/general_questionery_update_housing" />
+
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+            <Button
+
+                android:id="@+id/expandableButton3"
+
+                android:layout_width="fill_parent"
+
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/expandableLayout3"
+
+                android:background="#0072CE"
+
+
+                android:drawableRight="@android:drawable/arrow_down_float"
+
+                android:onClick="expandableButton3"
+
+                android:paddingRight="10dp"
+
+                android:text="COMMITMENT"
+
+                android:textColor="#fff" />
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+
+                android:id="@+id/expandableLayout3"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:layout_below="@+id/expandableButton3"
+
+                android:background="#D9D9D6"
+
+                android:padding="16dp"
+
+                app:el_duration="1000"
+
+                app:el_expanded="false"
+
+                app:el_parallax="0.5">
+
+
+                <include layout="@layout/general_questionery_commitment" />
+
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+            <Button
+
+                android:id="@+id/expandableButton5"
+
+                android:layout_width="fill_parent"
+
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/expandableLayout4"
+
+                android:background="#0072CE"
+
+
+                android:drawableRight="@android:drawable/arrow_down_float"
+
+                android:onClick="expandableButton5"
+
+                android:paddingRight="10dp"
+
+                android:text="PHOTO"
+
+                android:textColor="#fff" />
+
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+
+                android:id="@+id/expandableLayout5"
+
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+
+                android:layout_below="@+id/expandableButton5"
+
+                android:background="#D9D9D6"
+
+                android:padding="16dp"
+
+                app:el_duration="1000"
+
+                app:el_expanded="false"
+
+                app:el_parallax="0.5">
+
+
+                <include layout="@layout/general_questionery_photo" />
+
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>
+

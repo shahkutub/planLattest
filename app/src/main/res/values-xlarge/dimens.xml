@@ -1,0 +1,6 @@
+<resources>
+
+    <!-- Xlarge dimen -->
+    <dimen name="dim5">25dp</dimen>
+
+</resources>

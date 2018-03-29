@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.nanosoft.planInternational.tracking">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".utility.AppControler"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_app"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <activity
+            android:name=".view.activity.FeatureActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".OfflineUploadService">
+            <intent-filter>
+
+                <!-- <action android:name="android.intent.action.USER_PRESENT" /> -->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".view.activity.DetailActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBdfDB1q_l-BHzatdHcnnqGY4OSWKuzSU0 " />
+
+        <activity android:name=".view.activity.WelcomeActivity" />
+        <activity android:name=".view.activity.SchedulePlantSCListActivity" />
+        <activity android:name=".view.activity.ScheduleResultActivity" />
+
+        <receiver
+            android:name=".receiver.ConnectivityReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+
+                <!-- <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/> -->
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".view.activity.QuestioneryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.SurveyListActivity"
+            android:label="@string/title_activity_survey_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.activity.SurveyHistoryActivity"
+            android:label="@string/title_activity_survey_history"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.activity.UpdateDatabaseActivity"
+            android:label="@string/title_activity_database_update"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.activity.UpdateProfileActivity"
+            android:label="@string/title_activity_update_profile"
+            android:theme="@style/AppTheme" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="9e023f2919ad8451ebe7fa18ba58c59fe16cd184" />
+
+        <activity android:name=".view.activity.AlertActivity" />
+        <activity android:name=".view.activity.HistoryActivity"></activity>
+    </application>
+
+</manifest>

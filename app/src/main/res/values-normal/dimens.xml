@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Normal dimen -->
+    <dimen name="dim5">10dp</dimen>
+
+
+
+</resources>

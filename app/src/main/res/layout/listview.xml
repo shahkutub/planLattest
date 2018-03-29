@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#08e2fa"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="2dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/contact"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/sea"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <com.alexzh.circleimageview.CircleImageView
+
+                    android:id="@+id/playerImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/white"
+                    app:view_borderColor="#cccccc"
+                    app:view_borderWidth="0dp" />
+
+
+                <com.nanosoft.planInternational.tracking.utility.customfonts.MyTextView
+
+                    android:id="@+id/posTxt"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="20dp"
+                    android:text="CEO"
+                    android:textColor="#bc2cb7"
+                    android:textSize="16dp"
+                    android:textStyle="bold|italic" />
+
+                <ImageView
+
+                    android:id="@+id/image1"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="41dp"
+                    android:layout_toLeftOf="@+id/posTxt"
+                    android:layout_toStartOf="@+id/posTxt"
+                    android:background="@drawable/ic_action_id" />
+
+                <TextView
+                    android:id="@+id/ageidone"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_alignLeft="@+id/playerImage"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/playerImage"
+                    android:layout_alignTop="@+id/posTxt"
+                    android:layout_marginLeft="54dp"
+                    android:layout_marginStart="54dp"
+                    android:text="SC Age: "
+                    android:textColor="#3182bf"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/ageid"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_alignBaseline="@+id/posTxt"
+                    android:layout_alignBottom="@+id/posTxt"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_toRightOf="@+id/ageidone"
+                    android:text="32 years"
+                    android:textColor="#bc2cb7"
+                    android:textStyle="bold|italic" />
+
+                <com.nanosoft.planInternational.tracking.utility.customfonts.MyTextView
+
+                    android:id="@+id/nameTxt"
+                    style="?android:attr/listSeparatorTextViewStyle"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/ageid"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/playerImage"
+                    android:layout_toRightOf="@+id/playerImage"
+                    android:text="Andrew Simonds "
+                    android:textColor="#3182bf" />
+
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
+
+
+
