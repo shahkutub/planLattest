@@ -54,9 +54,10 @@ public class SurveyListActivity extends AppCompatActivity {
         dateArrayList = new ArrayList<>();
         dateArrayList = databaseManager.getDateList("1");
         if(dateArrayList.size()==0){
-            for (int i = 0; i < AppConstant.sponsoredChildInfoArrayList.size(); i++) {
+            dateArrayList.clear();
+            for (int i = 0; i < AppConstant.loadSharedPreferencesLogList(getApplicationContext()).size(); i++) {
 
-                dateArrayList.add(AppConstant.sponsoredChildInfoArrayList.get(i).getDateFlag());
+                dateArrayList.add(AppConstant.loadSharedPreferencesLogList(getApplicationContext()).get(i).getDateFlag());
             }
         }
 

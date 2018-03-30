@@ -384,15 +384,13 @@ public class FeatureActivity extends AppCompatActivity implements
                 break;
             case R.id.sc_servey:
 
-                AppConstant.sponsoredChildInfoArrayList = AppConstant.sponsoredChildInfoArrayList;
-                for (int i = 0; i <AppConstant.sponsoredChildInfoArrayList.size() ; i++) {
-                    //int id = SCListCustomAdapter.cbList.get(i).getId();
+               // AppConstant.sponsoredChildInfoArrayList = AppConstant.sponsoredChildInfoArrayList;
+                for (int i = 0; i <AppConstant.loadSharedPreferencesLogList(getApplicationContext()).size() ; i++) {
 
-                    databaseManager.priorityUpdate(AppConstant.sponsoredChildInfoArrayList.get(i).getScInfoTableId(),"1",AppConstant.sponsoredChildInfoArrayList.get(i).getDateFlag());
+                    databaseManager.priorityUpdate(AppConstant.loadSharedPreferencesLogList(getApplicationContext()).get(i).getScInfoTableId(),"1",AppConstant.loadSharedPreferencesLogList(getApplicationContext()).get(i).getDateFlag());
                 }
-
-
                 startActivity(new Intent(FeatureActivity.this, SurveyListActivity.class));
+
                 break;
             case R.id.general_survey:
                 Intent intent = new Intent(FeatureActivity.this, QuestioneryActivity.class);
@@ -411,12 +409,21 @@ public class FeatureActivity extends AppCompatActivity implements
                 dateArrayList = databaseManager.getDateList("1");
                 ArrayList<ScInfoModel> sponsoredChildInfoArrayList = new ArrayList<>();
 
-                for (int i = 0; i <dateArrayList.size() ; i++) {
-                 AppConstant.sponsoredChildInfoArrayList = databaseManager.getPrioritySCListByDate(dateArrayList.get(i));
-                }
-                save(sponsoredChildInfoArrayList);
 
-                getData();
+                if(dateArrayList.size()>0){
+                    for (int i = 0; i <dateArrayList.size() ; i++) {
+
+                        sponsoredChildInfoArrayList = databaseManager.getPrioritySCListByDate(dateArrayList.get(i));
+                    }
+
+                    AppConstant.saveSharedPreferencesLogList(getApplicationContext(),sponsoredChildInfoArrayList);
+                }
+
+
+               // AppConstant.loadSharedPreferencesLogList(getApplicationContext());
+                //save(sponsoredChildInfoArrayList);
+
+                //getData();
                 //saveArray(sponsoredChildInfoArrayList);
 //                new Operation(this).LogOut();
 //                finish();
