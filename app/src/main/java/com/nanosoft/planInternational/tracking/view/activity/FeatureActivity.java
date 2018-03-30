@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -62,11 +64,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nanosoft.planInternational.tracking.R;
+import com.nanosoft.planInternational.tracking.database.manager.DatabaseManager;
 import com.nanosoft.planInternational.tracking.database.manager.QuestioneryManager;
+import com.nanosoft.planInternational.tracking.database.model.ScInfoModel;
+import com.nanosoft.planInternational.tracking.utility.AppConstant;
 import com.nanosoft.planInternational.tracking.utility.Operation;
 import com.nanosoft.planInternational.tracking.view.fragment.SCProfileUpdateFragment;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -250,7 +258,7 @@ public class FeatureActivity extends AppCompatActivity implements
     private BottomSheet sheet;
 
     /*BOTTOM SHEET*/
-
+    DatabaseManager databaseManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -260,6 +268,7 @@ public class FeatureActivity extends AppCompatActivity implements
         setSupportActionBar(myToolbar);
         //  creatBoomMenu();
 
+        databaseManager = new DatabaseManager(this);
         initializer();
 
              /*bottom menu*/
@@ -374,6 +383,15 @@ public class FeatureActivity extends AppCompatActivity implements
                 }
                 break;
             case R.id.sc_servey:
+
+                AppConstant.sponsoredChildInfoArrayList = AppConstant.sponsoredChildInfoArrayList;
+                for (int i = 0; i <AppConstant.sponsoredChildInfoArrayList.size() ; i++) {
+                    //int id = SCListCustomAdapter.cbList.get(i).getId();
+
+                    databaseManager.priorityUpdate(AppConstant.sponsoredChildInfoArrayList.get(i).getScInfoTableId(),"1",AppConstant.sponsoredChildInfoArrayList.get(i).getDateFlag());
+                }
+
+
                 startActivity(new Intent(FeatureActivity.this, SurveyListActivity.class));
                 break;
             case R.id.general_survey:
@@ -389,7 +407,19 @@ public class FeatureActivity extends AppCompatActivity implements
                 break;*/
             case R.id.sync_server:
 
+                ArrayList<String> dateArrayList = new ArrayList<>();
+                dateArrayList = databaseManager.getDateList("1");
+                ArrayList<ScInfoModel> sponsoredChildInfoArrayList = new ArrayList<>();
 
+                for (int i = 0; i <dateArrayList.size() ; i++) {
+                 AppConstant.sponsoredChildInfoArrayList = databaseManager.getPrioritySCListByDate(dateArrayList.get(i));
+                }
+                save(sponsoredChildInfoArrayList);
+
+                getData();
+                //saveArray(sponsoredChildInfoArrayList);
+//                new Operation(this).LogOut();
+//                finish();
                 startActivity(new Intent(FeatureActivity.this, UpdateDatabaseActivity.class));
                 break;
             case R.id.server_url:
@@ -405,6 +435,25 @@ public class FeatureActivity extends AppCompatActivity implements
         }
     }
 
+    private void getData() {
+        Type listOfObjects = new TypeToken<ArrayList<ScInfoModel>>(){}.getType();
+        Gson gson= new Gson();
+        SharedPreferences myPrefs = getSharedPreferences("data", Context.MODE_PRIVATE);
+        String json = myPrefs.getString("data", "");
+        ArrayList<ScInfoModel> list2 = gson.fromJson(json, listOfObjects);
+    }
+
+    private void save(ArrayList<ScInfoModel> spChildInfoList) {
+
+        Type listOfObjects = new TypeToken<ArrayList<ScInfoModel>>(){}.getType();
+
+        Gson gson= new Gson();
+        String strObject = gson.toJson(spChildInfoList, listOfObjects); // Here list is your List<CUSTOM_CLASS> object
+        SharedPreferences myPrefs = getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = myPrefs.edit();
+        prefsEditor.putString("MyList", strObject);
+        prefsEditor.commit();
+    }
 
 
     public void showDialog() {

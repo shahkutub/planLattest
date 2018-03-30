@@ -15,6 +15,7 @@ import com.nanosoft.planInternational.tracking.R;
 import com.nanosoft.planInternational.tracking.adapter.SCListCustomAdapter;
 import com.nanosoft.planInternational.tracking.database.manager.DatabaseManager;
 import com.nanosoft.planInternational.tracking.database.model.ScInfoModel;
+import com.nanosoft.planInternational.tracking.utility.AppConstant;
 import com.nanosoft.planInternational.tracking.utility.ResponseCode;
 
 import java.util.ArrayList;
@@ -52,6 +53,15 @@ public class SurveyListActivity extends AppCompatActivity {
         databaseManager = new DatabaseManager(this);
         dateArrayList = new ArrayList<>();
         dateArrayList = databaseManager.getDateList("1");
+        if(dateArrayList.size()==0){
+            for (int i = 0; i < AppConstant.sponsoredChildInfoArrayList.size(); i++) {
+
+                dateArrayList.add(AppConstant.sponsoredChildInfoArrayList.get(i).getDateFlag());
+            }
+        }
+
+
+
         dateArrayList.add(0,"Select your Scheduled Date");
 //        for(int i = 0; i<dateArrayList.size();i++){
 //            if(dateArrayList.get(i).equalsIgnoreCase("Select your Scheduled Date")){
@@ -121,6 +131,8 @@ public class SurveyListActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 }
