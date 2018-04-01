@@ -417,17 +417,27 @@ public class QuestioneryManager  {
                     @Override
                     public void onResponse(String response) {
 
+                        if(response.equalsIgnoreCase("true")){
+                            responseValue ="true";
+                        }
 
-                        Log.d("serversend data", response);
+//                        if (response!=null){
+//                            try {
+//                                JSONObject jsonObject = new JSONObject();
+//                                responseValue =jsonObject.getString(response);
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//
+//                        }
 
-                        responseValue ="true";
 
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-
+                responseValue= "false";
             }
         }) {
             @Override
@@ -574,10 +584,12 @@ public class QuestioneryManager  {
 
 
                                 if(responseValue=="true"){
-                                    Toast.makeText(context, "Saved to server!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "Data Saved to server!", Toast.LENGTH_SHORT).show();
                                     //context.startActivity(new Intent(context, SurveyListActivity.class));
                                     activity.finish();
 
+                                }else {
+                                    Toast.makeText(context, "Data connection error!", Toast.LENGTH_SHORT).show();
                                 }
 
 

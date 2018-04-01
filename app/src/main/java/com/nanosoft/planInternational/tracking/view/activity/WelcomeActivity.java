@@ -43,7 +43,6 @@ import com.nanosoft.planInternational.tracking.database.helper.DatabaseHelper;
 import com.nanosoft.planInternational.tracking.database.manager.DatabaseManager;
 import com.nanosoft.planInternational.tracking.database.manager.DivisionManager;
 import com.nanosoft.planInternational.tracking.receiver.ConnectivityReceiver;
-import com.nanosoft.planInternational.tracking.utility.AppConstant;
 import com.nanosoft.planInternational.tracking.utility.Operation;
 
 import org.json.JSONArray;
@@ -113,7 +112,7 @@ public class WelcomeActivity extends AppCompatActivity implements ConnectivityRe
                         progress.show();
                     }
 
-                    AppConstant.sponsoredChildInfoArrayList = AppConstant.sponsoredChildInfoArrayList;
+
                     checkDatabase();
                 }
             });

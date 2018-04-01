@@ -36,7 +36,7 @@
     <!--Welcome Screen-->
     <string name="snackbar_name">Get Monitor Data !</string>
     <string name="no_internet">No Internet Connection !</string>
-    <string name="sc_status">You can update your profile after 9 months from Joining Date !</string>
+    <string name="sc_status">You can update SC profile only within 9-12 months of every year from the date of SC joining or update.</string>
     <string name="internet_connected">Internet Connected !</string>
     <string name="btn_settings">SETTING!</string>
     <string name="title_activity_survey_list">Survey List</string>

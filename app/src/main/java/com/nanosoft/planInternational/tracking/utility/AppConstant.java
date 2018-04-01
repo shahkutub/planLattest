@@ -10,6 +10,7 @@ import com.nanosoft.planInternational.tracking.database.model.ScInfoModel;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AppConstant {
 
@@ -28,6 +29,57 @@ public class AppConstant {
         String json = gson.toJson(callLog);
         prefsEditor.putString("myJson", json);
         prefsEditor.commit();
+    }
+
+
+    public static void saveSharedPreferencesRelationList(Context context, List<ScRelation> callLog) {
+        SharedPreferences mPrefs = context.getSharedPreferences("myRelation", context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(callLog);
+        prefsEditor.putString("myRelation", json);
+        prefsEditor.commit();
+    }
+
+
+    public static void saveSharedPreferencesOccupation(Context context, List<ScRelation> callLog) {
+        SharedPreferences mPrefs = context.getSharedPreferences("myOccupation", context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = mPrefs.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(callLog);
+        prefsEditor.putString("myRelation", json);
+        prefsEditor.commit();
+    }
+
+
+    public static ArrayList<ScRelation> loadSharedPreferencesOccupation(Context context) {
+        ArrayList<ScRelation> callLog = new ArrayList<ScRelation>();
+        SharedPreferences mPrefs = context.getSharedPreferences("myOccupation", context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("myOccupation", "");
+        if (json.isEmpty()) {
+            callLog = new ArrayList<ScRelation>();
+        } else {
+            Type type = new TypeToken<ArrayList<ScRelation>>() {
+            }.getType();
+            callLog = gson.fromJson(json, type);
+        }
+        return callLog;
+    }
+
+    public static ArrayList<ScRelation> loadSharedPreferencesRelationList(Context context) {
+        ArrayList<ScRelation> callLog = new ArrayList<ScRelation>();
+        SharedPreferences mPrefs = context.getSharedPreferences("myRelation", context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = mPrefs.getString("myRelation", "");
+        if (json.isEmpty()) {
+            callLog = new ArrayList<ScRelation>();
+        } else {
+            Type type = new TypeToken<ArrayList<ScRelation>>() {
+            }.getType();
+            callLog = gson.fromJson(json, type);
+        }
+        return callLog;
     }
 
 
