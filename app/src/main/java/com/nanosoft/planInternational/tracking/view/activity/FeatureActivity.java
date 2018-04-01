@@ -384,11 +384,10 @@ public class FeatureActivity extends AppCompatActivity implements
                 break;
             case R.id.sc_servey:
 
-               // AppConstant.sponsoredChildInfoArrayList = AppConstant.sponsoredChildInfoArrayList;
                 for (int i = 0; i <AppConstant.loadSharedPreferencesLogList(getApplicationContext()).size() ; i++) {
-
                     databaseManager.priorityUpdate(AppConstant.loadSharedPreferencesLogList(getApplicationContext()).get(i).getScInfoTableId(),"1",AppConstant.loadSharedPreferencesLogList(getApplicationContext()).get(i).getDateFlag());
                 }
+
                 startActivity(new Intent(FeatureActivity.this, SurveyListActivity.class));
 
                 break;
@@ -422,13 +421,6 @@ public class FeatureActivity extends AppCompatActivity implements
                 }
 
 
-               // AppConstant.loadSharedPreferencesLogList(getApplicationContext());
-                //save(sponsoredChildInfoArrayList);
-
-                //getData();
-                //saveArray(sponsoredChildInfoArrayList);
-//                new Operation(this).LogOut();
-//                finish();
                 startActivity(new Intent(FeatureActivity.this, UpdateDatabaseActivity.class));
                 break;
             case R.id.server_url:

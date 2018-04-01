@@ -45,6 +45,7 @@ public class SurveyListActivity extends AppCompatActivity {
     }
 
     private void findViewById() {
+
         spinnerDate = (Spinner) findViewById(R.id.spinnerDate);
         myRecyclerForScheduledsc = (RecyclerView) findViewById(R.id.myRecyclerForScheduledsc);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
