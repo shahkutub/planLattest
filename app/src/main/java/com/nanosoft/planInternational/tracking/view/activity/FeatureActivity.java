@@ -70,14 +70,22 @@ import com.nanosoft.planInternational.tracking.R;
 import com.nanosoft.planInternational.tracking.database.manager.DatabaseManager;
 import com.nanosoft.planInternational.tracking.database.manager.QuestioneryManager;
 import com.nanosoft.planInternational.tracking.database.model.ScInfoModel;
+import com.nanosoft.planInternational.tracking.utility.Api;
 import com.nanosoft.planInternational.tracking.utility.AppConstant;
 import com.nanosoft.planInternational.tracking.utility.Operation;
+import com.nanosoft.planInternational.tracking.utility.ScRelation;
 import com.nanosoft.planInternational.tracking.view.fragment.SCProfileUpdateFragment;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class FeatureActivity extends AppCompatActivity implements
         GoogleMap.OnMarkerClickListener,
@@ -295,7 +303,62 @@ public class FeatureActivity extends AppCompatActivity implements
         //retrieve();
         QuestioneryManager qmgr = new QuestioneryManager(this);
         qmgr.UploadAnswers();
+
+
+        getRelatiship();
+        getOcupation();
+
     }
+
+    private void getOcupation() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
+                .build();
+
+        Api api = retrofit.create(Api.class);
+        Call<List<ScRelation>> call = api.getOccupation();
+
+        call.enqueue(new Callback<List<ScRelation>>() {
+            @Override
+            public void onResponse(Call<List<ScRelation>> call, Response<List<ScRelation>> response) {
+
+                AppConstant.saveSharedPreferencesRelationList(getApplicationContext(),response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<ScRelation>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getRelatiship() {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
+                .build();
+
+        Api api = retrofit.create(Api.class);
+        Call<List<ScRelation>> call = api.getRelation();
+
+        call.enqueue(new Callback<List<ScRelation>>() {
+            @Override
+            public void onResponse(Call<List<ScRelation>> call, Response<List<ScRelation>> response) {
+
+                AppConstant.saveSharedPreferencesRelationList(getApplicationContext(),response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<ScRelation>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
 
     private void initializer() {
         sCProfileUpdateFragment = new SCProfileUpdateFragment();

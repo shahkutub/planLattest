@@ -19,6 +19,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -275,9 +276,11 @@ public class SCListCustomAdapter extends RecyclerView.Adapter<SCListCustomAdapte
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+                Toast.makeText(context, "This SC has sent to the to be scheduled list for scheduling", Toast.LENGTH_LONG).show();
                 databaseManager.priorityUpdate(id,"0","");
                 sponsoredChildInfoArrayList.remove(position);
                 notifyDataSetChanged();
+
 
 
                 dialog.dismiss();

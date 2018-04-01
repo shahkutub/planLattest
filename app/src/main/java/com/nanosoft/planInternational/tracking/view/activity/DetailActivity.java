@@ -8,9 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
@@ -27,7 +25,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.rey.material.widget.FrameLayout;
 import com.nanosoft.planInternational.tracking.R;
 import com.nanosoft.planInternational.tracking.database.manager.DatabaseManager;
 import com.nanosoft.planInternational.tracking.database.model.SCFamilyInfos;
@@ -38,6 +35,7 @@ import com.nanosoft.planInternational.tracking.utility.AppControler;
 import com.nanosoft.planInternational.tracking.utility.Operation;
 import com.nanosoft.planInternational.tracking.utility.customfonts.MyTextView;
 import com.nanosoft.planInternational.tracking.view.fragment.SCProfileUpdateFragment;
+import com.rey.material.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -356,10 +354,10 @@ public class DetailActivity extends AppCompatActivity {
             }
             if (genderTv.getId() == i) {
                 //   birthTv.setText("BIRTH : " + birth[i]);
-                genderTv.setText("3.5) GENDER : " + scFamilyInfosesList.get(i).getMember_gender());
+                genderTv.setText("3.5) RELATIONSHIP : " + scFamilyInfosesList.get(i).getMember_relationship());
             }
             if (relationTv.getId() == i) {
-                relationTv.setText("3.5.A) RELATIONSHIP  : " + scFamilyInfosesList.get(i).getMember_relationship());
+                relationTv.setText("3.5.A) GENDER : " + scFamilyInfosesList.get(i).getMember_gender());
             }
             if (primaryCareerTv.getId() == i) {
                 primaryCareerTv.setText("3.6) CARER : " + scFamilyInfosesList.get(i).getMember_is_primary_carer());
@@ -386,7 +384,10 @@ public class DetailActivity extends AppCompatActivity {
             if (!currentSer.equalsIgnoreCase(answer.getQuestion_serial_no())) {
                 currentSer = answer.getQuestion_serial_no();
                 filteredList.add(answer);
+
             }
+
+
         }
 
 //        fAdded = false;
@@ -413,8 +414,6 @@ public class DetailActivity extends AppCompatActivity {
                 scGenQuestionAnswer.setSc_id(filteredList.get(i).getSc_id());
                 scGenQuestionAnswer.setStatic_ans_id(filteredList.get(i).getStatic_ans_id());
                 scGenQuestionAnswer.setStatic_question_id(filteredList.get(i).getStatic_question_id());
-
-
                 filteredList.set(i,scGenQuestionAnswer);
             }
         }
@@ -506,7 +505,6 @@ public class DetailActivity extends AppCompatActivity {
             linearLayoutForCArdView.addView(answerTv);
             linearLayoutForCArdView.addView(dateTv);
 
-
             cardView.addView(linearLayoutForCArdView);
             scGeneralQuestionLayout.addView(cardView);
             if (questionNameTv.getId() == i) {
@@ -519,6 +517,8 @@ public class DetailActivity extends AppCompatActivity {
             if (dateTv.getId() == i) {
                 dateTv.setText("Last Update Date : " + filteredList.get(i).getDate());
             }
+
+
         }
     }
 
@@ -541,17 +541,18 @@ public class DetailActivity extends AppCompatActivity {
 
     public void showSnackBar() {
 
+        Toast.makeText(this, "You can update SC profile only within 9-12 months of every year from the date of SC joining or update.", Toast.LENGTH_LONG).show();
         //into threa
 
-        Snackbar.make(myRelativeLayout, getString(R.string.sc_status), Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.btn_settings), new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
-                    }
-                }).setActionTextColor(Color.RED).show();
-
-
+//        Snackbar.make(myRelativeLayout, getString(R.string.sc_status), Snackbar.LENGTH_LONG)
+//                .setAction(getString(R.string.btn_settings), new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+//                    }
+//                }).setActionTextColor(Color.RED).show();
+//
+//
     }
 
 }

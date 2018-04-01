@@ -51,8 +51,10 @@ import com.nanosoft.planInternational.tracking.database.model.SCFamilyInfos;
 import com.nanosoft.planInternational.tracking.database.model.ScGeneralQuestionAnswer;
 import com.nanosoft.planInternational.tracking.database.model.ScInfoModel;
 import com.nanosoft.planInternational.tracking.receiver.ConnectivityReceiver;
+import com.nanosoft.planInternational.tracking.utility.AppConstant;
 import com.nanosoft.planInternational.tracking.utility.LocationMgr;
 import com.nanosoft.planInternational.tracking.utility.Operation;
+import com.nanosoft.planInternational.tracking.utility.ScRelation;
 import com.nanosoft.planInternational.tracking.utility.UploadToServer;
 import com.nanosoft.planInternational.tracking.utility.custom_font.MyTextView;
 import com.rey.material.widget.FrameLayout;
@@ -206,6 +208,11 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private RadioGroup radioGroupPragnent;
     private MyTextView tvLatLng;
     private ScInfoModel scInfoModel;
+
+    private List<ScRelation> listScRelations = new ArrayList<>();
+    List <String> relations = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -216,6 +223,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
         scInfoTableId = getIntent().getExtras().getInt("SCINFOTABLEID");
         initialize();
+
+        listScRelations = AppConstant.loadSharedPreferencesRelationList(getApplicationContext());
+
+        for (int i = 0; i <listScRelations.size() ; i++) {
+            relations.add(listScRelations.get(i).getName());
+        }
+
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.MyCustomClass() {
@@ -233,6 +247,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
     String interviewDate;
 
     private void initialize() {
+
+
         tvLatLng = (MyTextView) findViewById(R.id.tvLatLng);
         mgr = new LocationMgr(this, tvLatLng);
 /*HEALTH*/
@@ -728,6 +744,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     }
 
+
     private void famaliInfo() {
         //scFamilyInfosesList = databaseManager.getFamilyInfo(scInfoTableId);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -813,20 +830,36 @@ public class UpdateProfileActivity extends AppCompatActivity {
 //                    "Others"
 //            };
 //
-            final List <String> relations = new ArrayList<>();
-            relations.add("Select Relationship");
-            relations.add("Mother");
-            relations.add("Father");
-            relations.add("Sister");
-            relations.add("Brother");
-            relations.add("Twin Sister");
-            relations.add("Twin Brother");
-            relations.add("Aunt");
-            relations.add("Uncle");
-            relations.add("Grandfather");
-            relations.add("Step Mother");
-            relations.add("Step Father");
-            relations.add("Others");
+//            final List <String> relations = new ArrayList<>();
+//            relations.add("Select Relationship");
+//            relations.add("Mother");
+//            relations.add("Father");
+//            relations.add("Sister");
+//            relations.add("Brother");
+//            relations.add("Twin Sister");
+//            relations.add("Twin Brother");
+//            relations.add("Aunt");
+//            relations.add("Uncle");
+//            relations.add("Grandfather");
+//            relations.add("Step Mother");
+//            relations.add("Step Father");
+//            relations.add("Others");
+
+
+//            final List <String> wholeft = new ArrayList<>();
+//            wholeft.add("Select who left");
+//            wholeft.add("Mother");
+//            wholeft.add("Father");
+//            wholeft.add("Sister");
+//            wholeft.add("Brother");
+//            wholeft.add("Twin Sister");
+//            wholeft.add("Twin Brother");
+//            wholeft.add("Aunt");
+//            wholeft.add("Uncle");
+//            wholeft.add("Grandfather");
+//            wholeft.add("Step Mother");
+//            wholeft.add("Step Father");
+
 
 
             final List <String> occpations = new ArrayList<>();
@@ -955,14 +988,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
             });
 
 
-            for (int i = 0; i <relations.size() ; i++) {
-                if(!TextUtils.isEmpty(familyInfos.getMember_relationship())){
-                    if(!familyInfos.getMember_relationship().equalsIgnoreCase(relations.get(i))){
-                        relations.add(familyInfos.getMember_relationship());
-                        break;
-                    }
-                }
-            }
+//            for (int i = 0; i <relations.size() ; i++) {
+//                if(!TextUtils.isEmpty(familyInfos.getMember_relationship())){
+//                    if(!familyInfos.getMember_relationship().equalsIgnoreCase(relations.get(i))){
+//                        relations.add(familyInfos.getMember_relationship());
+//                        break;
+//                    }
+//                }
+//            }
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(con,
                     R.layout.spinner_item_family, relations);
@@ -981,11 +1014,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                    if(!holder.sp3_5.getSelectedItem().toString().equalsIgnoreCase("Others")){
+                    if(!holder.sp3_5.getSelectedItem().toString().equalsIgnoreCase("Select Relationship")){
                         familyInfos.setMember_relationship(holder.sp3_5.getSelectedItem().toString());
                     }else {
-                        holder.layRelation.setVisibility(View.GONE);
-                        holder.et3_5.setVisibility(View.VISIBLE);
+
+                        familyInfos.setMember_relationship(" ");
+//                        holder.layRelation.setVisibility(View.GONE);
+//                        holder.et3_5.setVisibility(View.VISIBLE);
                     }
 
 
@@ -999,20 +1034,25 @@ public class UpdateProfileActivity extends AppCompatActivity {
             });
 
 
-            String[] arraysp3_5_a = new String[] {
-                    "Select Gender",
-                    "Male",
-                    "Female"
-            };
+            List <String> arraysp3_5_a = new ArrayList<>();
+            arraysp3_5_a.add("Select Gender");
+            arraysp3_5_a.add("Male");
+            arraysp3_5_a.add("Female");
+
+//            String[] arraysp3_5_a = new String[] {
+//                    "Select Gender",
+//                    "Male",
+//                    "Female"
+//            };
 
 
             ArrayAdapter<String> adapter3_5_a = new ArrayAdapter<String>(con,
                     R.layout.spinner_item_family, arraysp3_5_a);
             holder.sp3_5_a.setAdapter(adapter3_5_a);
 
-            for (int i = 0; i <arraysp3_5_a.length ; i++) {
+            for (int i = 0; i <arraysp3_5_a.size() ; i++) {
                 if(!TextUtils.isEmpty(familyInfos.getMember_gender())){
-                    if(familyInfos.getMember_gender().equalsIgnoreCase(arraysp3_5_a[i])){
+                    if(familyInfos.getMember_gender().equalsIgnoreCase(arraysp3_5_a.get(i)+" ")){
                         holder.sp3_5_a.setSelection(i);
                     }
                 }
@@ -1020,7 +1060,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
             holder.sp3_5_a.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    familyInfos.setMember_gender(holder.sp3_5_a.getSelectedItem().toString());
+
+                    if(!holder.sp3_5_a.getSelectedItem().toString().equalsIgnoreCase("Select Gender")){
+                        familyInfos.setMember_gender(holder.sp3_5_a.getSelectedItem().toString());
+                    }else {
+                        //familyInfos.setMember_gender(" ");
+                    }
+
                 }
 
                 @Override
@@ -1031,14 +1077,14 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
 
 
-            for (int i = 0; i <occpations.size() ; i++) {
-                if(!TextUtils.isEmpty(familyInfos.getMember_occupation())){
-                    if(!familyInfos.getMember_occupation().equalsIgnoreCase(occpations.get(i))){
-                        occpations.add(familyInfos.getMember_occupation());
-                        break;
-                    }
-                }
-            }
+//            for (int i = 0; i <occpations.size() ; i++) {
+//                if(!TextUtils.isEmpty(familyInfos.getMember_occupation())){
+//                    if(!familyInfos.getMember_occupation().equalsIgnoreCase(occpations.get(i))){
+//                        occpations.add(familyInfos.getMember_occupation());
+//                        break;
+//                    }
+//                }
+//            }
 
 
             ArrayAdapter<String> adaptersp3_7 = new ArrayAdapter<String>(con,
@@ -1048,7 +1094,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
             for (int i = 0; i <occpations.size() ; i++) {
                 if(!TextUtils.isEmpty(familyInfos.getMember_occupation())){
-                    if(familyInfos.getMember_occupation().equalsIgnoreCase(occpations.get(i))){
+                    if(familyInfos.getMember_occupation().equalsIgnoreCase(occpations.get(i)+" ")){
                         holder.sp3_7.setSelection(i);
                     }
                 }
@@ -1058,11 +1104,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
             holder.sp3_7.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if(!holder.sp3_7.getSelectedItem().toString().equalsIgnoreCase("Others")){
-                        familyInfos.setMember_relationship(holder.sp3_7.getSelectedItem().toString());
+                    if(!holder.sp3_7.getSelectedItem().toString().equalsIgnoreCase("Select Occupation")){
+                        familyInfos.setMember_occupation(holder.sp3_7.getSelectedItem().toString());
                     }else {
-                        holder.layOccupation.setVisibility(View.GONE);
-                        holder.et3_7.setVisibility(View.VISIBLE);
+                        //familyInfos.setMember_occupation(" ");
+//                        holder.layOccupation.setVisibility(View.GONE);
+//                        holder.et3_7.setVisibility(View.VISIBLE);
                     }
                 }
 
@@ -1082,7 +1129,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
             for (int i = 0; i <relations.size() ; i++) {
                 if(!TextUtils.isEmpty(familyInfos.getWho_left_household())){
-                    if(familyInfos.getWho_left_household().equalsIgnoreCase(relations.get(i))){
+                    if(familyInfos.getWho_left_household().equalsIgnoreCase(relations.get(i)+" ")){
                         holder.sp3_8.setSelection(i);
                     }
                 }
@@ -1091,7 +1138,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
             holder.sp3_8.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    familyInfos.setWho_left_household(holder.sp3_8.getSelectedItem().toString());
+
+                    if(!holder.sp3_8.getSelectedItem().toString().equalsIgnoreCase("Select who left")){
+                        familyInfos.setWho_left_household(holder.sp3_8.getSelectedItem().toString());
+                    }else {
+                       // familyInfos.setWho_left_household(" ");
+                    }
+
                 }
 
                 @Override
@@ -1100,29 +1153,44 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 }
             });
 
-            String[] arraysp3_8a = new String[] {
-                    "Select Reason left household",
-                    "To seek employment",
-                    "To live with relatives",
-                    "To study",
-                    "Due to Marriage",
-                    "Separation from spouse",
-                    "For more fertile land",
-                    "For religious instruction ",
-                    "Family separation",
-                    "Due to war",
-                    "unknown",
-                    "Death"
+            List <String> arraysp3_8a = new ArrayList<>();
 
-            };
+            arraysp3_8a.add("Select Reason left household");
+            arraysp3_8a.add("To seek employment");
+            arraysp3_8a.add("To live with relatives");
+            arraysp3_8a.add("To study");
+            arraysp3_8a.add("Due to Marriage");
+            arraysp3_8a.add("Separation from spouse");
+            arraysp3_8a.add("For more fertile land");
+            arraysp3_8a.add("Family separation");
+            arraysp3_8a.add("Due to war");
+            arraysp3_8a.add("unknown");
+            arraysp3_8a.add("Death");
+
+
+//            String[] arraysp3_8a = new String[] {
+//                    "Select Reason left household",
+//                    "To seek employment",
+//                    "To live with relatives",
+//                    "To study",
+//                    "Due to Marriage",
+//                    "Separation from spouse",
+//                    "For more fertile land",
+//                    "For religious instruction",
+//                    "Family separation",
+//                    "Due to war",
+//                    "unknown",
+//                    "Death"
+//
+//            };
 
             ArrayAdapter<String> adaptersp3_8a = new ArrayAdapter<String>(con,
                     R.layout.spinner_item_family, arraysp3_8a);
             holder.sp3_8a.setAdapter(adaptersp3_8a);
 
-            for (int i = 0; i <arraysp3_8a.length ; i++) {
+            for (int i = 0; i <arraysp3_8a.size() ; i++) {
                 if(!TextUtils.isEmpty(familyInfos.getNo_longer_in_household())){
-                    if(familyInfos.getNo_longer_in_household().equalsIgnoreCase(arraysp3_8a[i])){
+                    if(familyInfos.getNo_longer_in_household().equalsIgnoreCase(arraysp3_8a.get(i)+" ")){
                         holder.sp3_8a.setSelection(i);
                     }
                 }
@@ -1132,7 +1200,13 @@ public class UpdateProfileActivity extends AppCompatActivity {
             holder.sp3_8a.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    familyInfos.setNo_longer_in_household(holder.sp3_8a.getSelectedItem().toString());
+
+                    if(!holder.sp3_8a.getSelectedItem().toString().equalsIgnoreCase("Select Reason left household")){
+                        familyInfos.setNo_longer_in_household(holder.sp3_8a.getSelectedItem().toString());
+                    }else {
+                        //familyInfos.setNo_longer_in_household(" ");
+                    }
+
                 }
 
                 @Override
@@ -1142,29 +1216,43 @@ public class UpdateProfileActivity extends AppCompatActivity {
             });
 
 
+            List <String> arraysp3_9 = new ArrayList<>();
+            arraysp3_9.add("Select Reasons Joined");
+            arraysp3_9.add("New Born");
+            arraysp3_9.add("Returned – study");
+            arraysp3_9.add("Returned – relatives");
+            arraysp3_9.add("Returned – military service");
+            arraysp3_9.add("Returned - harvest");
+            arraysp3_9.add("Lost own Home");
+            arraysp3_9.add("Marriage");
+            arraysp3_9.add("Family Request");
+            arraysp3_9.add("Separation from spouse");
+            arraysp3_9.add("Previously omitted");
+            arraysp3_9.add("Returned – for better work opportunities");
 
-           final String[] arraysp3_9 = new String[] {
-                    "Select Reasons Joined",
-                    "New Bornt",
-                    "Returned – study",
-                    "Returned – relatives",
-                    "Returned – military service",
-                    "Returned - harvest",
-                    "Lost own Home",
-                    "Marriage",
-                    "Family Request",
-                    "Separation from spouse",
-                    "Previously omitted",
-                    "Returned – for better work opportunities"
 
-            };
+//           final String[] arraysp3_9 = new String[] {
+//                    "Select Reasons Joined",
+//                    "New Born",
+//                    "Returned – study",
+//                    "Returned – relatives",
+//                    "Returned – military service",
+//                    "Returned - harvest",
+//                    "Lost own Home",
+//                    "Marriage",
+//                    "Family Request",
+//                    "Separation from spouse",
+//                    "Previously omitted",
+//                    "Returned – for better work opportunities"
+//
+//            };
             ArrayAdapter<String> adaptersp3_9 = new ArrayAdapter<String>(con,
                     R.layout.spinner_item_family, arraysp3_9);
             holder.sp3_9.setAdapter(adaptersp3_9);
 
-            for (int i = 0; i <arraysp3_9.length ; i++) {
+            for (int i = 0; i <arraysp3_9.size() ; i++) {
                 if(!TextUtils.isEmpty(familyInfos.getReason_family_lives_with_SC())){
-                    if(familyInfos.getReason_family_lives_with_SC().equalsIgnoreCase(arraysp3_9[i])){
+                    if(familyInfos.getReason_family_lives_with_SC().equalsIgnoreCase(arraysp3_9.get(i)+" ")){
                         holder.sp3_9.setSelection(i);
                     }
                 }
@@ -1173,8 +1261,12 @@ public class UpdateProfileActivity extends AppCompatActivity {
             holder.sp3_9.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    if(!holder.sp3_9.getSelectedItem().toString().equalsIgnoreCase("Select Reasons Joined")){
+                        familyInfos.setReason_family_lives_with_SC(holder.sp3_9.getSelectedItem().toString());
+                    }else {
+                        //familyInfos.setReason_family_lives_with_SC(" ");
+                    }
 
-                    familyInfos.setReason_family_lives_with_SC(holder.sp3_9.getSelectedItem().toString());
                 }
 
                 @Override
@@ -1209,6 +1301,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
             return scFamilyInfosesList.size();
         }
     }
+
+
 
 
 
@@ -2364,32 +2458,32 @@ public class UpdateProfileActivity extends AppCompatActivity {
         for (int i = 0; i < scFamilyInfosesList.size(); i++) {
 
             if(!TextUtils.isEmpty(scFamilyInfosesList.get(i).getMember_full_name())){
-                databaseManager.saveFamilyInfo(scFamilyInfosesList.get(i).getMember_full_name(),
-                        scFamilyInfosesList.get(i).getMember_full_name(),
-                        String.valueOf(scFamilyInfosesList.get(i).getMember_birth_year()),
-                        scFamilyInfosesList.get(i).getMember_gender(),
-                        scFamilyInfosesList.get(i).getMember_relationship(),
-                        scFamilyInfosesList.get(i).getMember_is_primary_carer(),
-                        scFamilyInfosesList.get(i).getMember_occupation(),
-                        scFamilyInfosesList.get(i).getWho_left_household(),
-                        scFamilyInfosesList.get(i).getNo_longer_in_household(),
-                        scFamilyInfosesList.get(i).getReason_family_lives_with_SC(),
+                databaseManager.saveFamilyInfo(scFamilyInfosesList.get(i).getMember_full_name()+" ",
+                        scFamilyInfosesList.get(i).getMember_full_name()+" ",
+                        String.valueOf(scFamilyInfosesList.get(i).getMember_birth_year())+" ",
+                        scFamilyInfosesList.get(i).getMember_gender()+" ",
+                        scFamilyInfosesList.get(i).getMember_relationship()+" ",
+                        scFamilyInfosesList.get(i).getMember_is_primary_carer()+" ",
+                        scFamilyInfosesList.get(i).getMember_occupation()+" ",
+                        scFamilyInfosesList.get(i).getWho_left_household()+" ",
+                        scFamilyInfosesList.get(i).getNo_longer_in_household()+" ",
+                        scFamilyInfosesList.get(i).getReason_family_lives_with_SC()+" ",
                         scInfoTableId
                 );
 
                 JSONObject obj = new JSONObject();
                 try {
-                    obj.put("q_3_2", scFamilyInfosesList.get(i).getMember_full_name());
-                    obj.put("q_3_2_A", scFamilyInfosesList.get(i).getMember_full_name());
-                    obj.put("q_3_4", String.valueOf(scFamilyInfosesList.get(i).getMember_birth_year()));
-                    obj.put("q_3_5", scFamilyInfosesList.get(i).getMember_relationship());
-                    obj.put("q_3_5_A", scFamilyInfosesList.get(i).getMember_gender());
-                    obj.put("q_3_6", scFamilyInfosesList.get(i).getMember_is_primary_carer());
+                    obj.put("q_3_2", scFamilyInfosesList.get(i).getMember_full_name()+" ");
+                    obj.put("q_3_2_A", scFamilyInfosesList.get(i).getMember_full_name()+" ");
+                    obj.put("q_3_4", String.valueOf(scFamilyInfosesList.get(i).getMember_birth_year()+" "));
+                    obj.put("q_3_5", scFamilyInfosesList.get(i).getMember_relationship()+" ");
+                    obj.put("q_3_5_A", scFamilyInfosesList.get(i).getMember_gender()+" ");
+                    obj.put("q_3_6", scFamilyInfosesList.get(i).getMember_is_primary_carer()+" ");
                     //  obj.put("q_3_7", occupationListEt.get(i).getText().toString());
-                    obj.put("q_3_7", scFamilyInfosesList.get(i).getMember_occupation());
-                    obj.put("q_3_8", scFamilyInfosesList.get(i).getWho_left_household());
-                    obj.put("q_3_8_A", scFamilyInfosesList.get(i).getNo_longer_in_household());
-                    obj.put("q_3_9", scFamilyInfosesList.get(i).getReason_family_lives_with_SC());
+                    obj.put("q_3_7", scFamilyInfosesList.get(i).getMember_occupation()+" ");
+                    obj.put("q_3_8", scFamilyInfosesList.get(i).getWho_left_household()+" ");
+                    obj.put("q_3_8_A", scFamilyInfosesList.get(i).getNo_longer_in_household()+" ");
+                    obj.put("q_3_9", scFamilyInfosesList.get(i).getReason_family_lives_with_SC()+" ");
                     obj.put("sc_id", scInfoNumber);
                     array.put(obj);
                 } catch (Exception ex) {
