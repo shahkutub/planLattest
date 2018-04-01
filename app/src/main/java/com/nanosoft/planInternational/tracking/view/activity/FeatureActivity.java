@@ -469,11 +469,13 @@ public class FeatureActivity extends AppCompatActivity implements
             case R.id.sync_server:
 
                 ArrayList<String> dateArrayList = new ArrayList<>();
+                dateArrayList.clear();
                 dateArrayList = databaseManager.getDateList("1");
                 ArrayList<ScInfoModel> sponsoredChildInfoArrayList = new ArrayList<>();
 
 
                 if(dateArrayList.size()>0){
+                    sponsoredChildInfoArrayList.clear();
                     for (int i = 0; i <dateArrayList.size() ; i++) {
 
                         sponsoredChildInfoArrayList = databaseManager.getPrioritySCListByDate(dateArrayList.get(i));

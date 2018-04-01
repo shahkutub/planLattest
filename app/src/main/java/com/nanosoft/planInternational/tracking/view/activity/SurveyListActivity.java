@@ -52,6 +52,7 @@ public class SurveyListActivity extends AppCompatActivity {
 
         databaseManager = new DatabaseManager(this);
         dateArrayList = new ArrayList<>();
+        dateArrayList.clear();
         dateArrayList = databaseManager.getDateList("1");
         if(dateArrayList.size()==0){
             dateArrayList.clear();
